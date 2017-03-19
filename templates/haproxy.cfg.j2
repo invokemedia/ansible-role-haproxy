@@ -39,7 +39,7 @@ defaults
 {% endif %}
 
 frontend {{ haproxy_frontend_name }}
-    bind {{ haproxy_frontend_bind_address }}:{{ haproxy_frontend_port }}
+    bind {{ haproxy_frontend_bind_address }}:{{ haproxy_frontend_port }} {% if haproxy_frontend_ssl_pem %} ssl crt {{ haproxy_frontend_ssl_pem }} {% endif %}
     mode {{ haproxy_frontend_mode }}
     default_backend {{ haproxy_backend_name }}
 
